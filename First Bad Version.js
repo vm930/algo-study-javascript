@@ -14,6 +14,14 @@ var solution = function(isBadVersion) {
      * @param {integer} n Total versions
      * @return {integer} The first bad version
      */
+	//f t t t t
+	//  e
+	//   s
+
+	//if mid === false, set start = mid +1
+	// else set end = mid
+
+	//while(start !== end) return arr[mid]
 
 	return function(n) {
 		//create an array of to nth number
@@ -21,16 +29,17 @@ var solution = function(isBadVersion) {
 		for (let i = 1; i < n + 1; i++) {
 			arr.push(i);
 		}
+		let start = 0;
+		let end = arr.length - 1;
 
-		for (let j = 0; j < arr.length; j++) {
-			//fifo
-			console.log(arr[j]);
-			if (isBadVersion(arr[j])) {
-				return arr[j];
+		while (start !== end && start < end) {
+			let mid = Math.floor((start + end) / 2);
+			if (!isBadVersion(arr[mid])) {
+				start = mid + 1;
+			} else {
+				end = mid;
 			}
 		}
-
-		// console.log(n)
-		// console.log(arr)
+		return arr[start];
 	};
 };
