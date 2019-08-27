@@ -8,14 +8,14 @@ function mergeSort(array) {
 		return array;
 	} else {
 		let midpoint = Math.floor(array.length / 2);
-		let left = mergeSort(array.slice(0, midpoint));
-		let right = mergeSort(array.slice(midpoint));
+		// let left = mergeSort(array.slice(0, midpoint));
+		// let right = mergeSort(array.slice(midpoint));
+		let left = array.slice(0, midpoint);
+		let right = array.slice(midpoint);
 
-		return merge(left, right);
+		return merge(mergeSort(left), mergeSort(right));
 	}
 }
-
-console.log(mergeSort([ 4, 2, 8, 10, 99, 71, 45, 3, 52, 0 ]));
 
 function merge(array1, array2) {
 	// console.log(array1);
@@ -55,3 +55,7 @@ function merge(array1, array2) {
 }
 
 // console.log(merge([ 2 ], [ 0 ]));
+
+// console.log(mergeSort([4, 2, 8, 10, 99, 71, 45, 3, 52, 0]));
+// console.log(mergeSort([-4, 400, -4000, 14, 12, 11, 1, 5, -5, 17, 42]));
+// console.log(mergeSort([-5, 5, -4, 4, -3, 3, -2, 2, -1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, -60]));
