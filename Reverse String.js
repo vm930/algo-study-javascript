@@ -15,19 +15,18 @@ var reverseString = function(s) {
 	//set a start point and end point
 	//while s< e if s swap with e
 	// return the original s
-
 	let start = 0;
-	let end = start.length - 1;
+	let end = s.length - 1;
 
 	while (start < end) {
 		let temp = s[start];
 		s[start] = s[end];
 		s[end] = temp;
-		s++;
-		end++;
+		start++;
+		end--;
 	}
 	return s;
 };
 
 console.log(reverseString([ 'h', 'a', 'n', 'n', 'a', 'H' ]));
-console.log(reverseString([ 'v', 'i', 'c', 'k' ]));
+console.log(reverseString([ 'v', 'i', 'c', 'k', 'y' ]));
