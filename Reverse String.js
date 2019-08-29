@@ -9,4 +9,25 @@ Input: ["H","a","n","n","a","h"]
 Output: ["h","a","n","n","a","H"]
 */
 
-var reverseString = function(s) {};
+var reverseString = function(s) {
+	//o(n^2) to loop through every element and reverse.
+	//o(n) to use iliterative way
+	//set a start point and end point
+	//while s< e if s swap with e
+	// return the original s
+
+	let start = 0;
+	let end = start.length - 1;
+
+	while (start < end) {
+		let temp = s[start];
+		s[start] = s[end];
+		s[end] = temp;
+		s++;
+		end++;
+	}
+	return s;
+};
+
+console.log(reverseString([ 'h', 'a', 'n', 'n', 'a', 'H' ]));
+console.log(reverseString([ 'v', 'i', 'c', 'k' ]));

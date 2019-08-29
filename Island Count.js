@@ -44,7 +44,6 @@ function getNumberOfIslands(grid) {
 	}
 	// console.log(copy);
 	let count = 0;
-
 	function validation(i, j) {
 		let valid = [];
 		// let left = [i, j-1]
@@ -92,7 +91,7 @@ function getNumberOfIslands(grid) {
 			//if true, move on
 		} //else if current ele === 0 move on
 	}
-	console.log(copy);
+	// console.log(copy);
 	return count;
 }
 
