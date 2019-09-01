@@ -13,4 +13,11 @@ You must do this in-place without making a copy of the array.
 Minimize the total number of operations.
 */
 
-var moveZeroes = function(nums) {};
+var moveZeroes = function(nums) {
+	//find two pointers slow and fast
+	//set if arr[i] === 0; slow = arr[i];
+	//set fast = slow +1;
+	//while fast < arr.length
+	//if (arr[fast] !== 0) swamp arr[slow] with arr[fast] increment fast and slow
+	//else increment fast
+};
