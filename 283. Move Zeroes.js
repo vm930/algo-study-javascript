@@ -20,4 +20,32 @@ var moveZeroes = function(nums) {
 	//while fast < arr.length
 	//if (arr[fast] !== 0) swamp arr[slow] with arr[fast] increment fast and slow
 	//else increment fast
+
+	let slow;
+
+	for (let i = 0; i < nums.length; i++) {
+		if (nums[i] === 0) {
+			slow = i;
+			break;
+		}
+	}
+	let fast = slow + 1;
+	while (fast < nums.length) {
+		if (nums[fast] !== 0) {
+			let temp = nums[fast];
+			nums[fast] = nums[slow];
+			nums[slow] = temp;
+			fast++;
+			slow++;
+		} else {
+			fast++;
+		}
+	}
+
+	return nums;
 };
+
+console.log(moveZeroes([ 0, 1, 0, 3, 12 ]));
+console.log(moveZeroes([ 4, 1, 0, 0, 2 ]));
+console.log(moveZeroes([ 0, 0, 2 ]));
+console.log(moveZeroes([ -2, 0, 2 ]));
