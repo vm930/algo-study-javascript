@@ -28,7 +28,6 @@ Constraints:
 */
 
 function reverseWords(arr) {}
-
 console.log(
 	reverseWords([
 		'p',
