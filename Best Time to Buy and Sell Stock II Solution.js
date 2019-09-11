@@ -19,12 +19,15 @@ var maxProfit = function(prices) {
 		return profit;
 	}
 	for (let i = 1; i < prices.length; i++) {
-		if (prices[i - 1] < prices[i]) {
-			profit += prices[i] - prices[i - 1];
+		// console.log(profit);
+		let preVal = prices[i - 1];
+		let current = prices[i];
+		if (preVal < current) {
+			profit += current - preVal;
 		}
 	}
-	console.log(profit);
-	// return profit;
+	// console.log(profit);
+	return profit;
 };
 
 console.log(maxProfit([ 7, 1, 5, 3, 6, 4 ]));
