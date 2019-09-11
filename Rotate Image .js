@@ -22,3 +22,22 @@ rotate the input matrix in-place such that it becomes:
   [9,6,3]
 ]
 */
+
+var rotate = function(matrix) {
+	//make a swap helper function
+	function swap(matrix, i, j, k, m, n) {}
+	//define top and bottom
+	let top = 0;
+	let bottom = matrix.length - 1;
+
+	while (top < bottom) {
+		const length = top - bottom;
+		for (let i = 0; i < length; i++) {
+			swap(matrix);
+			swap(matrix);
+			swap(matrix);
+		}
+		top++;
+		bottom--;
+	}
+};
