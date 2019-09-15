@@ -12,10 +12,23 @@ Given n will always be valid.
 */
 
 var removeNthFromEnd = function(head, n) {
-	//use two runners method to optimizing runtime
-	// fast = head slow = head
-	//first assign
-	// for(let i = 0; i<=n+1; i++){
-	//fast = head.next;
-	//}
+	//use two runner method
+	//take care of edge case node is null or 1 element
+	if (head.next === null || head === null) {
+		return null;
+	}
+	let fast = head;
+	let slow = head;
+	for (let i = 0; i < n; i++) {
+		if (fast === null) {
+			return head;
+		} //taking care of edge case where n>length of head
+		fast = fast.next;
+	}
+	while (fast !== null) {
+		fast = fast.next;
+		slow = slow.next;
+	}
+	slow.next = slow.next.next;
+	return head;
 };
