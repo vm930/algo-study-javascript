@@ -44,12 +44,14 @@ function getNumberOfIslands(grid) {
 	}
 	// console.log(copy);
 	let count = 0;
+
 	function validation(i, j) {
 		let valid = [];
 		// let left = [i, j-1]
 		// let right = [i, j+1]
 		// let top = [i-1, j]
 		// let bottom = [i+1,j]
+
 		if (i - 1 >= 0) {
 			valid.push([ i - 1, j ]); //top
 		}
@@ -75,7 +77,7 @@ function getNumberOfIslands(grid) {
 			let indexI = validarr[k][0];
 			let indexJ = validarr[k][1];
 
-			if (grid[indexI][indexJ] === 1 && copy[indexI][indexJ] === false) {
+			if (grid[indexI][indexJ] === '1' && copy[indexI][indexJ] === false) {
 				findIsland(indexI, indexJ);
 			}
 		}
@@ -83,11 +85,10 @@ function getNumberOfIslands(grid) {
 
 	for (let i = 0; i < grid.length; i++) {
 		for (let j = 0; j < grid[i].length; j++) {
-			if (grid[i][j] === 1 && copy[i][j] === false) {
+			if (grid[i][j] === '1' && copy[i][j] === false) {
 				count++;
 				findIsland(i, j);
 			}
-			// console.log(count);
 			//if true, move on
 		} //else if current ele === 0 move on
 	}
@@ -95,14 +96,23 @@ function getNumberOfIslands(grid) {
 	return count;
 }
 
-console.log(
-	getNumberOfIslands([
-		[ 0, 1, 0, 1, 0 ],
-		[ 0, 0, 1, 1, 1 ],
-		[ 1, 0, 0, 1, 0 ],
-		[ 0, 1, 1, 0, 0 ],
-		[ 1, 0, 1, 0, 1 ]
-	])
-);
+// console.log(
+// 	getNumberOfIslands([
+// 		[ 0, 1, 0, 1, 0 ],
+// 		[ 0, 0, 1, 1, 1 ],
+// 		[ 1, 0, 0, 1, 0 ],
+// 		[ 0, 1, 1, 0, 0 ],
+// 		[ 1, 0, 1, 0, 1 ]
+// 	])
+// );
 
 // console.log(getNumberOfIslands([ [ 0, 1, 0 ], [ 0, 1, 0 ], [ 1, 1, 0 ] ]));
+
+console.log(
+	getNumberOfIslands([
+		[ '1', '1', '1', '1', '0' ],
+		[ '1', '1', '0', '1', '0' ],
+		[ '1', '1', '0', '0', '0' ],
+		[ '0', '0', '0', '0', '0' ]
+	])
+);

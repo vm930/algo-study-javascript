@@ -24,21 +24,86 @@ Output: 3
 
 var numIslands = function(grid) {
 	//make a copy of a grid and set all the elements as false
-	for (let i = 0; i < grid[0].length; i++) {
-		let copy = [];
-		for (let j = 0; j < grid.length; j++) {
-			copy[i].push(0);
+	let copy = [];
+
+	for (let i = 0; i < grid.length; i++) {
+		let copy2 = [];
+		copy.push(copy2);
+		for (let j = 0; j < grid[0].length; j++) {
+			copy2.push(false);
 		}
 	}
-	console.log(copy);
+	// console.log(copy);
 	//use a variable to keep track of counts
+	let count = 0;
+	//need two helper functions
+	//validate i and j
+	//isIsland
 
-	//let i = 0; j=0
-	//top  grid[i-1][j]
-	//left  grid[i+1][j-1]
-	//right  grid[i+1][j+1]
-	//bottom  grid[i+1][j]
+	function validate(i, j) {
+		let valid = [];
+
+		//left = [i ,j-1]
+		//right = [i ,j+1]
+		//top = [i-1 ,j]
+		//bottom = [i+1 ,j]
+
+		if (i - 1 >= 0) {
+			valid.push([ i - 1, j ]);
+		} //top
+		if (j - 1 >= 0) {
+			valid.push([ i, j - 1 ]);
+		} //left
+		if (j + 1 < grid[0].length) {
+			valid.push([ i, j + 1 ]);
+		} //right
+		if (i + 1 < grid.length) {
+			valid.push([ i + 1, j ]);
+		} //bottom
+
+		return valid;
+	}
+
+	function findIsland(i, j) {
+		//set the copy to be true
+		copy[i][j] = true;
+		let validArr = validate(i, j);
+		for (let k = 0; k < validArr.length; k++) {
+			let indexI = validArr[k][0];
+			let indexJ = validArr[k][1];
+
+			if (grid[indexI][indexJ] === '1' && copy[indexI][indexJ] === false) {
+				findIsland(indexI, indexJ);
+			}
+		}
+	}
+
+	for (let i = 0; i < grid.length; i++) {
+		for (let j = 0; j < grid[i].length; j++) {
+			if (grid[i][j] === '1' && copy[i][j] === false) {
+				count++;
+				findIsland(i, j);
+			}
+			//if true, move on
+		} //else if current ele === 0 move on
+	}
+	// console.log(copy);
+	return count;
 };
+// console.log(
+// 	numIslands([ [ 0, 1, 0, 1, 0 ], [ 0, 0, 1, 1, 1 ], [ 1, 0, 0, 1, 0 ], [ 0, 1, 1, 0, 0 ], [ 1, 0, 1, 0, 1 ] ])
+// );
+// console.log(numIslands([ 1, 1, 1, 1, 0 ], [ 1, 1, 0, 1, 0 ], [ 1, 1, 0, 0, 0 ], [ 0, 0, 0, 0, 0 ]));
+
+// console.log(
+// 	numIslands([ [ 0, 1, 0, 1, 0 ], [ 0, 0, 1, 1, 1 ], [ 1, 0, 0, 1, 0 ], [ 0, 1, 1, 0, 0 ], [ 1, 0, 1, 0, 1 ] ])
+// );
+
 console.log(
-	numIslands([ [ 0, 1, 0, 1, 0 ], [ 0, 0, 1, 1, 1 ], [ 1, 0, 0, 1, 0 ], [ 0, 1, 1, 0, 0 ], [ 1, 0, 1, 0, 1 ] ])
+	numIslands([
+		[ '1', '1', '1', '1', '0' ],
+		[ '1', '1', '0', '1', '0' ],
+		[ '1', '1', '0', '0', '0' ],
+		[ '0', '0', '0', '0', '0' ]
+	])
 );
