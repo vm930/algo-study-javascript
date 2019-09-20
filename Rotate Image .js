@@ -24,20 +24,26 @@ rotate the input matrix in-place such that it becomes:
 */
 
 var rotate = function(matrix) {
-	//make a swap helper function
-	function swap(matrix, i, j, k, m, n) {}
-	//define top and bottom
-	let top = 0;
-	let bottom = matrix.length - 1;
+	let last = matrix.length - 1;
+	let numOfRings = Math.floor(matrix.length / 2);
 
-	while (top < bottom) {
-		const length = top - bottom;
-		for (let i = 0; i < length; i++) {
-			swap(matrix);
-			swap(matrix);
-			swap(matrix);
-		}
-		top++;
-		bottom--;
+	function swap(x1, y1, x2, y2) {
+		let temp = matrix[x1][y1];
+		matrix[x1][y1] = matrix[x2][y2];
+		matrix[x2][y2] = temp;
 	}
+
+	for (let i = 0; i < numOfRings; i++) {
+		for (let j = 0; j < last - i; j++) {
+			swap(i, i + j, i + j, last);
+			swap(i, i + j, last, last - j);
+			swap(i, i + j, last - j, i);
+		}
+		last--;
+	}
+	// console.log(matrix);
+	return matrix;
 };
+
+console.log(rotate([ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]));
+console.log(rotate([ [ 7, 4, 1 ], [ 8, 5, 2 ], [ 9, 6, 3 ] ]));
