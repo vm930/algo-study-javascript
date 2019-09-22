@@ -1,6 +1,5 @@
 /*
 Rotate Image
-
 You are given an n x n 2D matrix representing an image.
 Rotate the image by 90 degrees (clockwise).
 Note:
@@ -14,7 +13,6 @@ Given input matrix =
   [4,5,6],
   [7,8,9]
 ],
-
 rotate the input matrix in-place such that it becomes:
 [
   [7,4,1],
