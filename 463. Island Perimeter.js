@@ -20,15 +20,15 @@ Explanation: The perimeter is the 16 yellow stripes in the image below:
 */
 var islandPerimeter = function(grid) {
 	/* use two for loops 
-  use perimeter = 0
-  check if grid[i][j] === 0 move on 
-  if grid[i][j] === 1 {
-      1.check to see top, bottom left and right 
-            (if they are === 0 || if they are === undefined ) then increament perimeter
-             else move on 
-  }
-  at the end return perimeter 
-  */
+	use perimeter = 0
+	check if grid[i][j] === 0 move on 
+	if grid[i][j] === 1 {
+		1.check to see top, bottom left and right 
+				(if they are === 0 || if they are === undefined ) then increament perimeter
+				else move on 
+	}
+	at the end return perimeter 
+	*/
 	if (grid === null) {
 		return 0;
 	}
