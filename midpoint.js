@@ -10,4 +10,16 @@ l.insertLast("a")
 l.insertLast("b")
 l.insertLast("c")
 midpoint(l); => returns {data: "b"}
+
+edge case with evan number
 */
+
+function midpoint(list) {
+	let slow = list.head;
+	let fast = list.head;
+	while (fast.next !== undefined && fast.next.next !== undefined) {
+		slow = slow.next;
+		fast = fast.next.next;
+	}
+	return slow;
+}
